@@ -16,6 +16,11 @@ library(gradethis)
 tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)
 ```
 
+## Instructions 
+
+> Did you hear about the mathematician who's afraid of negative numbers? He'll stop at nothing to avoid them. 
+
+This set of practice exercises corresponds to the lecture 1 slides and Chapter 1 of the textbook [OpenIntro Statistics](https://openintro.org/book/os/). 
 
 ## Exercise 1
 
@@ -196,4 +201,19 @@ quiz(
 )
 ```
 
+
+
+## Additional Practice
+
+For additional practice, it is recommended that you attempt the following exercises from the textbook:
+
+1) Exercise 1.6 on page 20
+2) Exercise 1.11 on page 21
+3) Exercise 1.16 on page 29
+4) Exercise 1.18 on page 30
+5) Exercise 1.23 on page 30
+6) Exercise 1.27 on page 31
+7) Exercise 1.32 on page 35
+8) Exercise 1.35 on page 36
+9) Exercise 1.43 on page 38
 
