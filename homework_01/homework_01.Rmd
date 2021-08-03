@@ -1,6 +1,9 @@
 ---
 title: "Homework 1"
-output: learnr::tutorial
+output: 
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
 runtime: shiny_prerendered
 ---
 
@@ -14,66 +17,183 @@ tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_le
 ```
 
 
-## Topic 1
+## Exercise 1
 
-### Exercise 
+### Case Study: using stents to prevent strokes
 
-*Here's a simple exercise with an empty code chunk provided for entering the answer.*
+Watch the video "Case Study: using stents to prevent strokes" included in the lecture slides for lecture 1 and answer the following questions.  
 
-Write the R code required to add two plus two:
-
-```{r two-plus-two, exercise=TRUE}
-
-```
-
-### Exercise with Code
-
-*Here's an exercise with some prepopulated code as well as `exercise.lines = 5` to provide a bit more initial room to work.*
-
-Now write a function that adds any two numbers and then call it:
-
-```{r add-function, exercise=TRUE, exercise.lines = 5}
-add <- function() {
-  
-}
-```
-
-## Topic 2
-
-### Exercise with Hint
-
-*Here's an exercise where the chunk is pre-evaluated via the `exercise.eval` option (so the user can see the default output we'd like them to customize). We also add a "hint" to the correct solution via the chunk immediate below labeled `print-limit-hint`.*
-
-Modify the following code to limit the number of rows printed to 5:
-
-```{r print-limit, exercise=TRUE, exercise.eval=TRUE}
-mtcars
-```
-
-```{r print-limit-hint}
-head(mtcars)
-```
-
-### Quiz
-
-*You can include any number of single or multiple choice questions as a quiz. Use the `question` function to define a question and the `quiz` function for grouping multiple questions together.*
-
-Some questions to verify that you understand the purposes of various base and recommended R packages:
-
-```{r quiz}
+```{r stent-visdeo-quiz, echo=FALSE}
 quiz(
-  question("Which package contains functions for installing other R packages?",
-    answer("base"),
-    answer("tools"),
-    answer("utils", correct = TRUE),
-    answer("codetools")
+  question("True or False: Patients in the treatment group received medication while patients in the control group did not.",
+    answer("False",correct = TRUE),
+    answer("True")
   ),
-  question("Which of the R packages listed below are used to create plots?",
-    answer("lattice", correct = TRUE),
-    answer("tools"),
-    answer("stats"),
-    answer("grid", correct = TRUE)
+  question('True or False: If you flip a coin 100 times, you should expect to land "heads" exactly 50 out of the 100 flips.',
+    answer("False", correct = TRUE),
+    answer("True")
+  ),
+  question("True or False: The observed difference between the control and treatment groups in the stent experiment may just be due to natural variation.",
+    answer("False"),
+    answer("True",correct = TRUE)
+           )
+)
+```
+
+
+## Exercise 2
+
+Read Exercise 1.1 on page 11 of the textbook. Run the following R code to obtain the answer to question 1.1 (a):
+
+```{r 1_1_a, exercise=TRUE}
+(10/43)*100
+```
+
+Type in a similar R command to answer question 1.1 (b):
+
+```{r 1_1_b, exercise=TRUE}
+
+```
+
+
+```{r 1_1_b-quiz, echo=FALSE}
+quiz(
+  question("What percent of patients in the acupuncture study described in Exercise 1.1 were pain free in the control group?",
+    answer("about 10 percent"),
+    answer("about 8 percent"),
+    answer("about 4 percent", correct=TRUE),
+    answer("about 2 percent")
   )
 )
 ```
+
+Take a minute to reflect on the answers to 1.1(a) and 1.1(b) then take the following quiz:
+
+```{r 1_1_c-quiz, echo=FALSE}
+quiz(
+  question("In which group did a higher percent of patients become pain free 24 hours after receiving acupuncture?",
+    answer("Control"),
+    answer("Treatment", correct=TRUE)
+  )
+)
+```
+
+Now let's do exercise 1.1.(d):
+```{r 1_1_d_quiz, echo=FALSE}
+quiz(
+  question("True or False: The observed difference between the control and treatment groups in the acupuncture experiment may just be due to chance.",
+    answer("False"),
+    answer("True",correct = TRUE)
+           )
+)
+```
+
+
+## Exercise 3
+
+Make sure that you have read sections 1.2.1 and 1.2.2 and understand the classification of variables discussed on slide 16 of lecture 1. 
+
+Consider the High School and Beyond dataset, stored in the openintro package. The data are stored as a data matrix or **data frame** called `hsb2`. You can read more about this dataset [here](http://openintrostat.github.io/openintro/reference/hsb2.html). Below is a preview of the dataset. You can use the arrow on the right hand side to scroll 
+through the variables, and the numbers on the bottom to see different rows in 
+the dataset.
+
+```{r print-hsb2}
+hsb2
+```
+
+Now, think about the variables `race`, `ses`, `schtyp`, and `prog` in the dataset. Answer the following quiz questions. 
+
+```{r categorical-type-quiz,echo=FALSE}
+quiz(
+  question("The variable race is:",
+    answer("categorical", correct=TRUE),
+    answer("numerical")
+  ),
+  question("The variable ses is best decsribed as:",
+    answer("categorical nominal"),
+    answer("categorical binary"),
+    answer("categorical ordinal", correct=TRUE)
+  ),
+  question("The variable schtyp is best decsribed as:",
+    answer("categorical nominal"),
+    answer("categorical binary", correct=TRUE),
+    answer("categorical ordinal")
+  ),
+  question("True or False: The id column in the hsb2 data frame should not be considered as a variable.",
+    answer("False"),
+    answer("True", correct=TRUE)
+    )
+)
+```
+
+
+## Exercise 4
+
+Watch the video on Data Basics included in slide 18 of lecture 1. 
+
+Take the following quiz:
+
+```{r data-basics-quiz, echo=FALSE}
+quiz(
+  question("Which variable in the county data set discussed in the video is discrete?",
+        answer("state"),
+        answer("pop2010", correct=TRUE),
+        answer("fed_spend"),
+        answer("poverty"),
+        answer("smoking_ban")
+        ),
+  question("True or False: The variable fed_spend is a continuous numerical variable.",
+        answer("False"),
+        answer("True", correct=TRUE) 
+        ),
+  question("True or False: If we numbered the states, the state variable would become numerical.",
+        answer("False", correct=TRUE),
+        answer("True")
+        )
+)
+```
+
+
+## Exercise 5
+
+Watch the video on Data Collection included on slide 21 of lecture 1 slides. 
+
+```{r data-collection-quiz, echo=FALSE}
+quiz(
+  question("True or False: In order to avoid bias, it is essential to draw a representative sample.",
+          answer("False"),
+          answer("True", correct=TRUE)),
+  question("True or False: When collecting data to answer a research question it is acceptable to use a convenience sample.",
+           answer("False",  correct=TRUE),
+          answer("True")
+          )
+)
+```
+
+
+## Exercise 6
+
+Consider exercise 1.40 on page 37 of the textbook. Carefully examine the scatter plot shown along with the exercise in the book. Now take the following quiz:
+
+```{r 1_40_quiz,echo=FALSE}
+quiz(
+  question("Which best describes the Percent with Bachelor's Degree variable?",
+           answer("It is the response variable."),
+           answer("It is the explanatory variable.", correct=TRUE)
+           ),
+  question("Which best describes the Per Capita Income variable?",
+           answer("It is the response variable.", correct=TRUE),
+           answer("It is the explanatory variable.")
+           ),
+  question("True or False: The scatter plot suggests that there is a strong linear relationship between the two variable Percent with Bachelor's Degree and Per Capita Income.",
+           answer("False"),
+           answer("True", correct=TRUE)
+           ),
+  question("True or False: We can conclude that having a bachelor's degree increases one's income.",
+           answer("False", correct=TRUE),
+           answer("True")
+           )
+)
+```
+
 
