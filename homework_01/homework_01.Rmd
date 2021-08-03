@@ -261,7 +261,7 @@ quiz(
 )
 ```
 
-## Relationships between variables
+## Exercise 7
 
 ###
 
@@ -356,4 +356,14 @@ For additional practice, it is recommended that you attempt the following exerci
 7) Exercise 1.32 on page 35
 8) Exercise 1.35 on page 36
 9) Exercise 1.43 on page 38
+
+## Summary
+
+**Summary**: Here's a quick summary of the most important ideas from this first notebook.
+
+  * Data is stored in a table called a data frame. The rows of the data frame are observations and the columns are collected variables.
+  * Data is either numerical or categorical -- to determine type, ask "is the average of these observations meaningful?"
+  * Two variables are associated if a change in one has predictive value about a change in the other.
+  * There are many ways data can be collected, but in order to produce meaningful results we must use random sampling.
+  * Results from a sample can be generalized only to a population for which that sample is representative.
 
