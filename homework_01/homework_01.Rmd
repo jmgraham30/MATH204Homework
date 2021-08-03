@@ -14,6 +14,10 @@ library(learnr)
 library(openintro)
 library(gradethis)
 tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_learnr)
+houses <- read.csv("https://raw.githubusercontent.com/NikhilKumarMutyala/Linear-Regression-from-scartch-on-KC-House-Dataset/master/kc_house_data.csv")
+houses$exterior <- sample(c("brick", "vinyl siding", "shingles", "NA"), size = nrow(houses), prob = c(0.15, 0.7, 0.12, 0.03), replace = TRUE)
+houses$month <- sample(1:12, size = nrow(houses), replace = TRUE)
+housesSubset <- houses[ , c(1, 23, 3, 6, 7, 9, 22)]
 ```
 
 ## Instructions 
@@ -100,6 +104,8 @@ quiz(
 
 ## Exercise 3
 
+### Review variable types
+
 Make sure that you have read sections 1.2.1 and 1.2.2 and understand the classification of variables discussed on slide 16 of lecture 1. 
 
 Consider the High School and Beyond dataset, stored in the openintro package. The data are stored as a data matrix or **data frame** called `hsb2`. You can read more about this dataset [here](http://openintrostat.github.io/openintro/reference/hsb2.html). Below is a preview of the dataset. You can use the arrow on the right hand side to scroll 
@@ -135,6 +141,56 @@ quiz(
 )
 ```
 
+
+### Test Your Understanding
+
+This exercise uses the `houses` dataset which is displayed below:
+```{r}
+houses
+```
+
+Answer the following using your knowledge of the dataset and variable types.
+
+```{r id-vars-numerical, echo = FALSE}
+quiz(
+question_checkbox(
+"Check off each of the variables from the `houses` dataset which are numerical",
+answer("id", message = "are we able to take a meaningful average of these values?"),
+answer("month", message = "is an average meaningful here?"),
+answer("price", correct = TRUE),
+answer("sqft_living", correct = TRUE),
+answer("sqft_lot", correct = TRUE),
+answer("waterfront"),
+answer("exterior"),
+allow_retry = TRUE,
+try_again = "Be sure to select all of them! There are three."
+),
+question_checkbox(
+"Check off each of the variables from the `houses` dataset which are categorical",
+answer("id", message = "are we able to take a meaningful average of these values?"),
+answer("month", correct = TRUE),
+answer("price"),
+answer("sqft_living"),
+answer("sqft_lot"),
+answer("waterfront", correct = TRUE),
+answer("exterior", correct = TRUE),
+allow_retry = TRUE,
+try_again = "Be sure to select all of them!"
+),
+question_checkbox(
+"Check off each of the variables from the `houses` dataset which are unique identifiers.",
+answer("id", correct = TRUE),
+answer("month"),
+answer("price"),
+answer("sqft_living"),
+answer("sqft_lot"),
+answer("waterfront"),
+answer("exterior"),
+allow_retry = TRUE,
+try_again = "There's just one here!"
+)
+)
+```
 
 ## Exercise 4
 
@@ -205,7 +261,87 @@ quiz(
 )
 ```
 
+## Relationships between variables
 
+###
+
+**Association, Independence, Correlation:** Two variables are *associated* with one another if a change in levels of one is generally accompanied by change in the other. That is, larger values of one variable are accompanied by larger (or smaller) values in the other. Think – does knowing something about one of the variables give me any information about the other? If two variables are not associated, then we might say that they are *independent* of one another. Lastly, *correlation* is a way to formally measure the strength of a <u>LINEAR</u> association between two variables. Look at the plots considering characteristics of various diamonds below.
+
+###
+
+```{r plots-associations-num, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE, results = FALSE, fig.width = 3, fig.height = 3}
+ggplot(data=diamonds) + geom_point(mapping = aes(x = carat, y = price), color = "blue", alpha = .15) + labs(title = "Price by Carat", x = "Carat", y = "Price")
+ggplot(data=diamonds) + geom_point(mapping = aes(x = carat, y = depth), color = "blue", alpha = .15) + labs(title = "Carat by Depth", x = "Depth", y = "Carat")
+ggplot(data=diamonds) + geom_point(mapping = aes(x = x, y = y), color = "blue", alpha = .15) + labs(title = "Length by Width", x = "Length (mm)", y = "Width (mm)")
+```
+
+###
+
+Use the plots above to answer the following questions.
+
+```{r plots-associations-questions-num, echo = FALSE}
+quiz(
+question_checkbox(
+"Which of the plots above highlight an association between the corresponding variables?",
+answer("Carat versus Price", correct = TRUE),
+answer("Depth versus Carat"),
+answer("Length by Width", correct = TRUE),
+allow_retry = TRUE
+),
+question(
+"Which pair of variables from the above plots is independent?",
+answer("price and carat"),
+answer("carat and depth", correct = TRUE),
+answer("length and width"),
+allow_retry = TRUE
+),
+question(
+"Which of the plots shows the strongest correlation between the corresponding variables?",
+answer("Carat versus Price"),
+answer("Depth versus Carat"),
+answer("Length by Width", correct = TRUE),
+allow_retry = TRUE
+)
+)
+```
+
+###
+
+Since both of the variables in each of the plots above are numerical, we can describe the direction of the association. Notice that there is a *positive* association in both of the plots you identified above, since an increase in one of the variables is generally accompanied by an increase in the other. If two numerical variables are associated but an increase in one is generally accompanied by a decrease in the other, we say that the association is *negative*. For those familiar with lines and slopes, the direction of the association corresponds to the sign on the slope of a line of "best fit" (which we will discuss at the end of our course).
+
+###
+
+We can also identify whether an association exists between variables when one or more are categorical. Consider the plots below which refer back to our `houses` dataset from earlier.
+
+```{r plots-association-cat, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE, results = FALSE, fig.width = 4, fig.height = 4}
+housesSubset$waterfront <- ifelse(housesSubset$waterfront == 1, "yes", "no")
+housesSubset$waterfront <- as.factor(housesSubset$waterfront)
+ggplot(data=housesSubset) + geom_boxplot(mapping = aes(x = waterfront, y = price)) + labs(title = "Price by Waterfront", x = "Waterfront", y = "Price", group = "Waterfront") + scale_y_log10()
+ggplot(data=housesSubset) + geom_bar(mapping = aes(x = waterfront, fill = exterior), position = "fill") + labs(title = "Exterior Covering and Waterfront", x = "Waterfront") + theme(legend.position = "below")
+```
+
+###
+
+```{r plots-associations-questions-cat, echo = FALSE}
+question_checkbox(
+"One of the plots above shows an association between the corresponding variables. Which one is it?",
+answer("Price by Waterfront", correct = TRUE),
+answer("Exterior Covering and Waterfront"),
+allow_retry = TRUE
+)
+```
+
+###
+
+Did you get the previous question right on the first try? Think about why the answer is as this workbook indicates and ask a question if you need more clarification.
+
+###
+
+**Major Questions In Statistics**: Given groups with different characteristics (differing levels) regarding variable *X*, do they differ with respect to variable *Y*?
+
+###
+
+We'll find that we can't just answer these questions by looking at plots involving some sample data. Why not?
 
 ## Additional Practice
 
