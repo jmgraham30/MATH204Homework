@@ -38,17 +38,20 @@ Watch the video ["Case Study: using stents to prevent strokes"](https://www.yout
 
 ```{r stent-visdeo-quiz, echo=FALSE}
 quiz(
-  question("True or False: Patients in the treatment group received medication while patients in the control group did not.",
+  question_checkbox("True or False: Patients in the treatment group received medication while patients in the control group did not.",
     answer("False",correct = TRUE),
-    answer("True")
+    answer("True"),
+    allow_retry = TRUE
   ),
-  question('True or False: If you flip a coin 100 times, you should expect to land "heads" exactly 50 out of the 100 flips.',
+  question_checkbox('True or False: If you flip a coin 100 times, you should expect to land "heads" exactly 50 out of the 100 flips.',
     answer("False", correct = TRUE),
-    answer("True")
+    answer("True"),
+    allow_retry = TRUE
   ),
-  question("True or False: The observed difference between the control and treatment groups in the stent experiment may just be due to natural variation.",
+  question_checkbox("True or False: The observed difference between the control and treatment groups in the stent experiment may just be due to natural variation.",
     answer("False"),
-    answer("True",correct = TRUE)
+    answer("True",correct = TRUE),
+    allow_retry = TRUE
            )
 )
 ```
@@ -71,11 +74,12 @@ Type in a similar R command to answer question 1.1 (b):
 
 ```{r 1_1_b-quiz, echo=FALSE}
 quiz(
-  question("What percent of patients in the acupuncture study described in Exercise 1.1 were pain free in the control group?",
+  question_checkbox("What percent of patients in the acupuncture study described in Exercise 1.1 were pain free in the control group?",
     answer("about 10 percent"),
     answer("about 8 percent"),
     answer("about 4 percent", correct=TRUE),
-    answer("about 2 percent")
+    answer("about 2 percent"),
+    allow_retry = TRUE
   )
 )
 ```
@@ -84,9 +88,10 @@ Take a minute to reflect on the answers to 1.1(a) and 1.1(b) then take the follo
 
 ```{r 1_1_c-quiz, echo=FALSE}
 quiz(
-  question("In which group did a higher percent of patients become pain free 24 hours after receiving acupuncture?",
+  question_checkbox("In which group did a higher percent of patients become pain free 24 hours after receiving acupuncture?",
     answer("Control"),
-    answer("Treatment", correct=TRUE)
+    answer("Treatment", correct=TRUE),
+    allow_retry = TRUE
   )
 )
 ```
@@ -94,9 +99,10 @@ quiz(
 Now let's do exercise 1.1.(d):
 ```{r 1_1_d_quiz, echo=FALSE}
 quiz(
-  question("True or False: The observed difference between the control and treatment groups in the acupuncture experiment may just be due to chance.",
+  question_checkbox("True or False: The observed difference between the control and treatment groups in the acupuncture experiment may just be due to chance.",
     answer("False"),
-    answer("True",correct = TRUE)
+    answer("True",correct = TRUE),
+    allow_retry = TRUE
            )
 )
 ```
@@ -120,23 +126,27 @@ Now, think about the variables `race`, `ses`, `schtyp`, and `prog` in the datase
 
 ```{r categorical-type-quiz,echo=FALSE}
 quiz(
-  question("The variable race is:",
+  question_checkbox("The variable race is:",
     answer("categorical", correct=TRUE),
-    answer("numerical")
+    answer("numerical"),
+allow_retry = TRUE
   ),
-  question("The variable ses is best decsribed as:",
+  question_checkbox("The variable ses is best decsribed as:",
     answer("categorical nominal"),
     answer("categorical binary"),
-    answer("categorical ordinal", correct=TRUE)
+    answer("categorical ordinal", correct=TRUE),
+allow_retry = TRUE
   ),
-  question("The variable schtyp is best decsribed as:",
+  question_checkbox("The variable schtyp is best decsribed as:",
     answer("categorical nominal"),
     answer("categorical binary", correct=TRUE),
-    answer("categorical ordinal")
+    answer("categorical ordinal"),
+allow_retry = TRUE
   ),
-  question("True or False: The id column in the hsb2 data frame should not be considered as a variable.",
+  question_checkbox("True or False: The id column in the hsb2 data frame should not be considered as a variable.",
     answer("False"),
-    answer("True", correct=TRUE)
+    answer("True", correct=TRUE),
+allow_retry = TRUE
     )
 )
 ```
