@@ -20,13 +20,17 @@ tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_le
 
 > Did you hear about the mathematician who's afraid of negative numbers? He'll stop at nothing to avoid them. 
 
-This set of practice exercises corresponds to the lecture 1 slides and Chapter 1 of the textbook [OpenIntro Statistics](https://openintro.org/book/os/). 
+This set of practice exercises correspond to the lecture 1 slides and Chapter 1 of the textbook [OpenIntro Statistics](https://openintro.org/book/os/). The goals for these homework exercises is for you to test your understanding of the following basic data principles and concepts:
+
+1) Populations and samples,
+2) Data organization, variables and their types, 
+3) Sampling and bias, and
+4) Relations between variables. 
+
 
 ## Exercise 1
 
-### Case Study: using stents to prevent strokes
-
-Watch the video "Case Study: using stents to prevent strokes" included in the lecture slides for lecture 1 and answer the following questions.  
+Watch the video ["Case Study: using stents to prevent strokes"](https://www.youtube.com/watch?v=nEHFF1ADpWE) included in the lecture slides for lecture 1 and answer the following questions.  
 
 ```{r stent-visdeo-quiz, echo=FALSE}
 quiz(
@@ -134,7 +138,7 @@ quiz(
 
 ## Exercise 4
 
-Watch the video on Data Basics included in slide 18 of lecture 1. 
+Watch the video on [Data Basics](https://www.youtube.com/watch?v=Mjif8PTgzUs) included in slide 18 of lecture 1. 
 
 Take the following quiz:
 
@@ -161,7 +165,7 @@ quiz(
 
 ## Exercise 5
 
-Watch the video on Data Collection included on slide 21 of lecture 1 slides. 
+Watch the video on [Data Collection](https://www.youtube.com/watch?v=2N_bkiyTiXU) included on slide 21 of lecture 1 slides. 
 
 ```{r data-collection-quiz, echo=FALSE}
 quiz(
