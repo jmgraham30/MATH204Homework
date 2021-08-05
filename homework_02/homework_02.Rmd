@@ -17,66 +17,108 @@ tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_le
 ```
 
 
-## Topic 1
+## Instructions
 
-### Exercise 
+This homework is meant to provide practice with those aspects of R programming introduced during the second lecture. Be sure to take your time and try to understand what each of the R commands in this homework set does. 
 
-*Here's a simple exercise with an empty code chunk provided for entering the answer.*
+## Using R as a calculator
 
-Write the R code required to add two plus two:
+The exercises in this section provide practice in using R as a simple calculator. 
 
-```{r two-plus-two, exercise=TRUE}
+### Exercise 1
+
+Use R code to compute a value for the expression $10\left(1 - \frac{3}{2}\right)$. 
+
+
+```{r calc_ex_1, exercise = TRUE}
 
 ```
 
-### Exercise with Code
-
-*Here's an exercise with some prepopulated code as well as `exercise.lines = 5` to provide a bit more initial room to work.*
-
-Now write a function that adds any two numbers and then call it:
-
-```{r add-function, exercise=TRUE, exercise.lines = 5}
-add <- function() {
-  
-}
+```{r calc_ex_1-solution}
+10*(1 - 3/2)
 ```
 
-## Topic 2
-
-### Exercise with Hint
-
-*Here's an exercise where the chunk is pre-evaluated via the `exercise.eval` option (so the user can see the default output we'd like them to customize). We also add a "hint" to the correct solution via the chunk immediate below labeled `print-limit-hint`.*
-
-Modify the following code to limit the number of rows printed to 5:
-
-```{r print-limit, exercise=TRUE, exercise.eval=TRUE}
-mtcars
+```{r calc_ex_1-check}
+grade_code()
 ```
 
-```{r print-limit-hint}
-head(mtcars)
+### Exercise 2
+
+Use R to compute a value for the expression $2^8 - \sqrt{16}$. 
+
+```{r calc_ex_2, exercise = TRUE}
+
 ```
 
-### Quiz
-
-*You can include any number of single or multiple choice questions as a quiz. Use the `question` function to define a question and the `quiz` function for grouping multiple questions together.*
-
-Some questions to verify that you understand the purposes of various base and recommended R packages:
-
-```{r quiz}
-quiz(
-  question("Which package contains functions for installing other R packages?",
-    answer("base"),
-    answer("tools"),
-    answer("utils", correct = TRUE),
-    answer("codetools")
-  ),
-  question("Which of the R packages listed below are used to create plots?",
-    answer("lattice", correct = TRUE),
-    answer("tools"),
-    answer("stats"),
-    answer("grid", correct = TRUE)
-  )
-)
+```{r calc_ex_2-solution}
+2^8 - sqrt(16)
 ```
+
+```{r calc_ex_2-check}
+grade_code()
+```
+
+### Exercise 3
+
+Insert parentheses in the appropriate place(s) to obtain a value of 2. 
+
+```{r calc_ex_3, exercise = TRUE, exercise.eval = TRUE}
+2 * 3 +  4 * 2 - 6 / 2*3/ 2 * 5
+
+```
+
+```{r calc_ex_3-solution}
+2 * (3 +  4 * 2 - 6 / (2*3))/ (2 * 5)
+
+```
+
+```{r calc_ex_3-check}
+grade_code()
+```
+
+
+## Single-variable numerical data 
+
+The exercises in this section provide practice with working with one-variable numerical data in R. 
+
+### Exercise 1
+
+
+### Exercise 2
+
+
+### Exercise 3
+
+
+
+
+## Single-variabel categorical data
+
+The exercises in this section provide practice with working with one-variable categorical data in R. 
+
+### Exercise 1
+
+
+### Exercise 2
+
+
+### Exercise 3
+
+
+
+
+## Data Frames 
+
+The exercises in this section provide some practice with the more elementary aspects of working with data frames in R. 
+
+### Exercise 1
+
+
+### Exercise 2
+
+
+### Exercise 3
+
+
+
 
