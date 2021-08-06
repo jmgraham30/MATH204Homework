@@ -83,13 +83,62 @@ The exercises in this section provide practice with working with one-variable nu
 
 ### Exercise 1
 
+Create a vector containing the numerical values 4.7, 8.3, 5.6, 6.9, 9.4, 8.3, and 7.1, and store it in a variable named `my_data`. 
+```{r nd_ex_1, exercise = TRUE}
+
+```
+
+```{r nd_ex_1-solution}
+my_data <- c(4.7, 8.3, 5.6, 6.9, 9.4, 8.3, 7.1)
+
+```
+
+```{r nd_ex_1-check}
+grade_code()
+```
 
 ### Exercise 2
+Compute the length of the vector assigned to the variable `my_data`. 
+```{r nd_ex_2-setup}
+my_data <- c(4.7, 8.3, 5.6, 6.9, 9.4, 8.3, 7.1)
 
+```
+
+
+```{r nd_ex_2, exercise = TRUE}
+
+```
+
+```{r nd_ex_2-solution}
+length(my_data)
+
+```
+
+```{r nd_ex_2-check}
+grade_code()
+```
 
 ### Exercise 3
 
+Compute the mean of the data assigned to the variable `my_data`. 
+```{r nd_ex_3-setup}
+my_data <- c(4.7, 8.3, 5.6, 6.9, 9.4, 8.3, 7.1)
 
+```
+
+
+```{r nd_ex_3, exercise = TRUE}
+
+```
+
+```{r nd_ex_3-solution}
+mean(my_data)
+
+```
+
+```{r nd_ex_3-check}
+grade_code()
+```
 
 
 ## Single-variabel categorical data
@@ -98,14 +147,84 @@ The exercises in this section provide practice with working with one-variable ca
 
 ### Exercise 1
 
+Suppose we have data consisting of t-shirt sizes for 8 individuals with 3 size S, 4 size M, and 1 sise L. Create a factor in R to store this data and assign it to a variable named `t_sizes`. 
+
+```{r fct_ex_1, exercise = TRUE}
+
+```
+
+```{r fct_ex_1-solution}
+t_sizes <- factor(c("S","S","S","M","M","M","M","L"))
+
+```
+
+```{r fct_ex_1-check}
+grade_code()
+```
 
 ### Exercise 2
 
+Confirm that the length of the data stored in `t_sizes` is 8. 
+```{r fct_ex_2-setup}
+t_sizes <- factor(c("S","S","S","M","M","M","M","L"))
+
+```
+
+```{r fct_ex_2, exercise = TRUE}
+
+```
+
+```{r fct_ex_2-solution}
+length(t_sizes)
+
+```
+
+```{r fct_ex_2-check}
+grade_code()
+```
 
 ### Exercise 3
 
+Use the `table()` function in R to output a frequency table for the data stored in the `t_sizes` variable. 
 
+```{r fct_ex_3-setup}
+t_sizes <- factor(c("S","S","S","M","M","M","M","L"))
 
+```
+
+```{r fct_ex_3, exercise = TRUE}
+
+```
+
+```{r fct_ex_3-solution}
+table(t_sizes)
+
+```
+
+```{r fct_ex_3-check}
+grade_code()
+```
+
+### Exercise 4
+
+As we did in the introduction to R in lecture 2, create a barplot to display the data stored in the `t_sizes` variable. 
+```{r fct_ex_4-setup}
+t_sizes <- factor(c("S","S","S","M","M","M","M","L"))
+
+```
+
+```{r fct_ex_4, exercise = TRUE}
+
+```
+
+```{r fct_ex_4-solution}
+barplot(table(t_sizes))
+
+```
+
+```{r fct_ex_4-check}
+grade_code()
+```
 
 ## Data Frames 
 
