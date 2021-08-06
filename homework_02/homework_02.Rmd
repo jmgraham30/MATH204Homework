@@ -343,9 +343,26 @@ grade_code()
 
 ### Exercise 4
 
+Use the following plot to answer the quiz questions below.
+```{r, echo=FALSE}
+heart_transplant %>% ggplot(aes(age,survtime)) + geom_point()
+```
 
-### Exercise 5
 
+```{r df_association-quiz, echo=FALSE}
+quiz(
+  question_checkbox("True or False: The plot shows a clear positive association between the `age` and `survtime` variables.",
+    answer("False", correct=TRUE),
+    answer("True"),
+    allow_retry = TRUE
+  ),
+  question_checkbox("True or False: The plot shows a clear negative association between the `age` and `survtime` variables.",
+    answer("False", correct=TRUE),
+    answer("True"),
+    allow_retry = TRUE
+  )
+)
+```
 
 
 
