@@ -8,8 +8,7 @@ runtime: shiny_prerendered
 ---
 
 ```{r setup, include=FALSE}
-library(dplyr)
-library(ggplot2)
+library(tidyverse)
 library(learnr)
 library(openintro)
 library(gradethis)
@@ -232,11 +231,100 @@ The exercises in this section provide some practice with the more elementary asp
 
 ### Exercise 1
 
+Consider data shown below from the Stanford University Heart Transplant Study conducted to determine whether an experimental heart transplant program increased lifespan:
+```{r df_ex_1-setup}
+transplant_study <- heart_transplant %>% select(-c(acceptyear, wait))
+```
+
+```{r df_ex_1, exercise = TRUE, exercise.eval = TRUE}
+transplant_study
+```
+
+In this data, each of the variables shown is described as follows:
+
+1) `id` - ID number of the patient.
+2) `age` - Age of the patient at the beginning of the study.
+3) `survived` - Survival status with levels alive and dead.
+4) `survtime` - Number of days patients were alive after the date they were determined to be a candidate for a heart transplant until the termination date of the study
+5) `prior` - Whether or not the patient had prior surgery with levels yes and no.
+6) `transplant` - Transplant status with levels control (did not receive a transplant) and treatment (received a transplant).
+
+Respond to the following quiz questions regarding the type of the variables in the `transplant_study` data. 
+```{r df_variable-quiz, echo=FALSE}
+quiz(
+  question_checkbox("The `id` variable is best described as which type?",
+    answer("Numerical Continuous"),
+    answer("Numerical Discrete"),
+    answer("Categorical Ordinal"),
+    answer("A Unique Identifier", correct=TRUE),
+    answer("Categorical Nominal"),
+    answer("Categorical Binary"),
+    allow_retry = TRUE
+  ),
+  question_checkbox("The `age` variable is best described as which type?",
+    answer("Numerical Continuous"),
+    answer("Numerical Discrete", correct=TRUE),
+    answer("Categorical Ordinal"),
+    answer("A Unique Identifier"),
+    answer("Categorical Nominal"),
+    answer("Categorical Binary"),
+    allow_retry = TRUE
+  ),question_checkbox("The `survived` variable is best described as which type?",
+    answer("Numerical Continuous"),
+    answer("Numerical Discrete"),
+    answer("Categorical Ordinal"),
+    answer("A Unique Identifier"),
+    answer("Categorical Nominal"),
+    answer("Categorical Binary",correct=TRUE),
+    allow_retry = TRUE
+  ),question_checkbox("The `survtime` variable is best described as which type?",
+    answer("Numerical Continuous"),
+    answer("Numerical Discrete", correct=TRUE),
+    answer("Categorical Ordinal"),
+    answer("A Unique Identifier"),
+    answer("Categorical Nominal"),
+    answer("Categorical Binary"),
+    allow_retry = TRUE
+  ),question_checkbox("The `prior` variable is best described as which type?",
+    answer("Numerical Continuous"),
+    answer("Numerical Discrete"),
+    answer("Categorical Ordinal"),
+    answer("A Unique Identifier"),
+    answer("Categorical Nominal"),
+    answer("Categorical Binary", correct=TRUE),
+    allow_retry = TRUE
+  )
+)
+```
 
 ### Exercise 2
+ 
+Use the `$` operator to extract the `age` variable from the `transplant_study` data set as a vector. 
+```{r df_ex_2-setup}
+transplant_study <- heart_transplant %>% select(-c(acceptyear, wait))
 
+```
+
+```{r df_ex_2, exercise = TRUE}
+
+```
+
+```{r df_ex_2-solution}
+transplant_study$age
+
+```
+
+```{r df_ex_2-check}
+grade_code()
+```
 
 ### Exercise 3
+
+
+### Exercise 4
+
+
+### Exercise 5
 
 
 
