@@ -320,6 +320,26 @@ grade_code()
 
 ### Exercise 3
 
+The `dim()` function returns the number of rows and columns of a data frame, for example
+```{r df_ex_3a, exercise = TRUE, exercise.eval = TRUE}
+dim(transplant_study)
+```
+
+The output tells us that the `transplant_study` data consists of 103 rows or observations, and  6 columns or variables. 
+
+Use the `dim()` function to output the number of rows and columns in the `resume`` data set that records data from a study that sought to understand the influence of race and gender on job application callback rates from job postings in Boston and Chicago for several months during 2001 and 2002.
+```{r df_ex_3b, exercise = TRUE}
+
+```
+
+```{r df_ex_3b-solution}
+dim(resume)
+
+```
+
+```{r df_ex_3b-check}
+grade_code()
+```
 
 ### Exercise 4
 
