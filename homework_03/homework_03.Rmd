@@ -8,8 +8,7 @@ runtime: shiny_prerendered
 ---
 
 ```{r setup, include=FALSE}
-library(dplyr)
-library(ggplot2)
+library(tidyverse)
 library(learnr)
 library(openintro)
 library(gradethis)
@@ -17,66 +16,180 @@ tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_le
 ```
 
 
-## Topic 1
+## Instructions 
 
-### Exercise 
+> I ate a clock yesterday, it was very time-consuming.
 
-*Here's a simple exercise with an empty code chunk provided for entering the answer.*
+The exercises in this assignment correspond to lecture 3 and section 2.1 of the textbook. 
 
-Write the R code required to add two plus two:
 
-```{r two-plus-two, exercise=TRUE}
 
+## Scatterplots for paired numerical data
+
+### Scatterplots with R
+
+One way to make a scatterplot is to use the `gf_point` function from the `ggformula` package. The following code loads the `ggformula` package and makes a scatterplot of the variable `sat_m` (math SAT percentile) versus the variable `sat_v` (verbal SAT percentile) in the `satgpa` data set from the `openintro` package that complements the textbook. This data set records SAT and GPA data for 1000 students at an unnamed college.
+
+```{r eg_scatter, message=FALSE,eval=TRUE}
+library(openintro)
+library(ggformula)
+
+gf_point(sat_m~sat_v,data=satgpa)
 ```
 
-### Exercise with Code
+The expression `sat_m~sat_v` is an example of what is called a **formula** in R. Think of the variable on the left of the formula as the $y$ variable and the variable on the right of the formula as the $x$ variable. 
 
-*Here's an exercise with some prepopulated code as well as `exercise.lines = 5` to provide a bit more initial room to work.*
+### Exercise 1 a
 
-Now write a function that adds any two numbers and then call it:
-
-```{r add-function, exercise=TRUE, exercise.lines = 5}
-add <- function() {
-  
-}
-```
-
-## Topic 2
-
-### Exercise with Hint
-
-*Here's an exercise where the chunk is pre-evaluated via the `exercise.eval` option (so the user can see the default output we'd like them to customize). We also add a "hint" to the correct solution via the chunk immediate below labeled `print-limit-hint`.*
-
-Modify the following code to limit the number of rows printed to 5:
-
-```{r print-limit, exercise=TRUE, exercise.eval=TRUE}
-mtcars
-```
-
-```{r print-limit-hint}
-head(mtcars)
-```
-
-### Quiz
-
-*You can include any number of single or multiple choice questions as a quiz. Use the `question` function to define a question and the `quiz` function for grouping multiple questions together.*
-
-Some questions to verify that you understand the purposes of various base and recommended R packages:
-
-```{r quiz}
+```{r scatter_one, echo=FALSE}
 quiz(
-  question("Which package contains functions for installing other R packages?",
-    answer("base"),
-    answer("tools"),
-    answer("utils", correct = TRUE),
-    answer("codetools")
-  ),
-  question("Which of the R packages listed below are used to create plots?",
-    answer("lattice", correct = TRUE),
-    answer("tools"),
-    answer("stats"),
-    answer("grid", correct = TRUE)
+  question_checkbox("True or False: The scatter plots suggests an association between the two variables.",
+    answer("False"),
+    answer("True",correct = TRUE),
+    allow_retry = TRUE
   )
 )
 ```
+
+### Exercise 1 b
+
+Modify the following code to create a scatterplot of `fy_gpa` (first year (college) grade point average) versus `hs_gpa` (high school grade point average) from the `satgpa` data. 
+
+```{r scatter_two, exercise = TRUE}
+library(openintro)
+library(ggformula)
+
+gf_point(sat_m~sat_v,data=satgpa)
+```
+
+```{r scatter_two-solution}
+library(openintro)
+library(ggformula)
+
+gf_point(fy_gpa~hs_gpa,data=satgpa)
+```
+
+```{r scatter_two-check}
+grade_code()
+```
+
+### Exercise 1 c
+
+This exercise references exercise 2.2 on page 56 of the textbook. 
+
+```{r associations_one, echo = FALSE}
+quiz(
+question(
+"Which statment best describes the assocaition of the variables in plot (1) of exercise 2.2?",
+answer("no association"),
+answer("positive association", correct = TRUE),
+answer("negative association"),
+allow_retry = TRUE
+),
+question(
+"Which statment best describes the assocaition of the variables in plot (2) of exercise 2.2?",
+answer("no association", correct = TRUE),
+answer("positive association"),
+answer("negative association"),
+allow_retry = TRUE
+),
+question(
+"Which statment best describes the assocaition of the variables in plot (3) of exercise 2.2?",
+answer("no association"),
+answer("positive association",correct = TRUE),
+answer("negative association"),
+allow_retry = TRUE
+),
+question(
+"Which statment best describes the assocaition of the variables in plot (4) of exercise 2.2?",
+answer("no association"),
+answer("positive association"),
+answer("negative association",correct = TRUE),
+allow_retry = TRUE
+)
+)
+```
+
+### Exercise 1 d
+
+
+```{r associations_two, echo = FALSE}
+quiz(
+question(
+"Which statement best describes what the scatterplot suggests about the association between the two variables for first year college and high school gpa?",
+answer("There is no association"),
+answer("Strong positive association"),
+answer("Slight positive association", correct = TRUE),
+answer("Slight negative association"),
+answer("Strong negative association"),
+allow_retry = TRUE
+)
+)
+```
+
+## Dot plots and the mean
+
+### Exercise 2 a
+
+Using the R function `mean`, compute the mean each of the variables `sat_v`, `sat_m`, `hs_gpa`, and `fy_gpa`, in the `satgpa` data set. 
+
+```{r mean_one-setup}
+library(openintro)
+
+```
+
+```{r mean_one, exercise = TRUE}
+
+```
+
+```{r mean_one-solution}
+mean(satgpa$sat_v)
+mean(satgpa$sat_m)
+mean(satgpa$hs_gpa)
+mean(satgpa$fy_gpa)
+```
+
+```{r mean_one-check}
+grade_code()
+```
+
+### Exercise 2 b
+
+This exercise refers to problem 2.10 on page 57 of the textbook. 
+
+## Histograms and shape
+
+
+
+
+## Variance and standard deviation 
+
+
+
+
+## Box plots, quartiles, and the median
+
+
+
+
+## Robust statistics 
+
+
+
+
+## Additional Practice
+
+For additional practice, it is recommended that you attempt the following exercises from the textbook:
+
+1) Exercise  on page 
+2) Exercise  on page 
+3) Exercise  on page 
+4) Exercise  on page 
+5) Exercise  on page 
+6) Exercise  on page 
+7) Exercise  on page 
+8) Exercise  on page 
+9) Exercise  on page 
+
+
 
