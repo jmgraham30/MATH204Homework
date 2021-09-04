@@ -23,7 +23,6 @@ tutorial_options(exercise.timelimit = 60, exercise.checker = gradethis::grade_le
 The exercises in this assignment correspond to lecture 3 and section 2.1 of the textbook. 
 
 
-
 ## Scatterplots for paired numerical data
 
 ### Scatterplots with R
@@ -80,7 +79,7 @@ This exercise references exercise 2.2 on page 56 of the textbook.
 ```{r associations_one, echo = FALSE}
 quiz(
 question(
-"Which statment best describes the assocaition of the variables in plot (1) of exercise 2.2?",
+"Which statment best describes the association of the variables in plot (1) of exercise 2.2?",
 answer("no association"),
 answer("positive association", correct = TRUE),
 answer("negative association"),
@@ -131,7 +130,7 @@ allow_retry = TRUE
 
 ### Exercise 2 a
 
-Using the R function `mean`, compute the mean each of the variables `sat_v`, `sat_m`, `hs_gpa`, and `fy_gpa`, in the `satgpa` data set. 
+Using the R function `mean`, compute the mean for each of the variables `sat_v`, `sat_m`, `hs_gpa`, and `fy_gpa`, in the `satgpa` data set. 
 
 ```{r mean_one-setup}
 library(openintro)
@@ -157,23 +156,192 @@ grade_code()
 
 This exercise refers to problem 2.10 on page 57 of the textbook. 
 
+```{r mix_and_match, echo = FALSE}
+quiz(
+question(
+"For figure (a) in textbook problem 2.10, which boxplot corresponds to the histogram?",
+answer("(1)"),
+answer("(2)",correct=TRUE),
+answer("(3)"),
+allow_retry = TRUE
+),
+question(
+"For figure (b) in textbook problem 2.10, which boxplot corresponds to the histogram?",
+answer("(1)"),
+answer("(2)"),
+answer("(3)",correct=TRUE),
+allow_retry = TRUE
+),
+question(
+"For figure (c) in textbook problem 2.10, which boxplot corresponds to the histogram?",
+answer("(1)",correct=TRUE),
+answer("(2)"),
+answer("(3)"),
+allow_retry = TRUE
+)
+)
+```
+
 ## Histograms and shape
 
+### Histograms in R
 
+One way to make a histogram is to use the `gf_histogram` function from the `ggformula` package. The following code loads the `ggformula` package and makes a histogram of the variable `sat_m` (math SAT percentile) versus the variable in the `satgpa` data set from the `openintro` package that complements the textbook.
+
+```{r eg_hist, message=FALSE,eval=TRUE}
+library(openintro)
+library(ggformula)
+
+gf_histogram(~sat_m,data=satgpa)
+```
+
+### Exerise 3 a
+
+```{r hist_qa, echo = FALSE}
+quiz(
+question(
+"Based on the previous histogram, which of the following applies best to the distribution of the sat_m variable?",
+answer("left skewed"),
+answer("symmetric",correct=TRUE),
+answer("right skewed"),
+allow_retry = TRUE
+),
+question(
+"Based on the previous histogram, which of the following applies best to the distribution of the sat_m variable?",
+answer("unimodal",correct=TRUE),
+answer("bimodal"),
+answer("multimodal"),
+allow_retry = TRUE
+)
+)
+```
+
+
+### Exercise 3 b
+
+Modify the following R code to obtain a histogram for the `sat_v` variable in the `satgpa` data. 
+
+```{r hist_two, exercise = TRUE, eval=TRUE}
+library(openintro)
+library(ggformula)
+
+gf_histogram(~sat_m,data=satgpa)
+```
+
+```{r hist_two-solution}
+library(openintro)
+library(ggformula)
+
+gf_histogram(~sat_v,data=satgpa)
+```
+
+```{r hist_two-check}
+grade_code()
+```
 
 
 ## Variance and standard deviation 
 
+### Exercise 4 a
+
+Using the R function `var`, compute the variance for each of the variables `sat_v`, `sat_m`, `hs_gpa`, and `fy_gpa`, in the `satgpa` data set. 
+
+```{r var_one-setup}
+library(openintro)
+
+```
+
+```{r var_one, exercise = TRUE}
+
+```
+
+```{r var_one-solution}
+var(satgpa$sat_v)
+var(satgpa$sat_m)
+var(satgpa$hs_gpa)
+var(satgpa$fy_gpa)
+```
+
+```{r var_one-check}
+grade_code()
+```
 
 
+### Exercise 4 b
+
+Using the R function `sd`, compute the standard deviation for each of the variables `sat_v`, `sat_m`, `hs_gpa`, and `fy_gpa`, in the `satgpa` data set. 
+
+```{r sd_one-setup}
+library(openintro)
+
+```
+
+```{r sd_one, exercise = TRUE}
+
+```
+
+```{r sd_one-solution}
+sd(satgpa$sat_v)
+sd(satgpa$sat_m)
+sd(satgpa$hs_gpa)
+sd(satgpa$fy_gpa)
+```
+
+```{r sd_one-check}
+grade_code()
+```
 
 ## Box plots, quartiles, and the median
 
 
+### Exercise 5 a
+
+Using the R function `median`, compute the median for each of the variables `sat_v`, `sat_m`, `hs_gpa`, and `fy_gpa`, in the `satgpa` data set. 
+
+```{r median_one-setup}
+library(openintro)
+
+```
+
+```{r median_one, exercise = TRUE}
+
+```
+
+```{r median_one-solution}
+median(satgpa$sat_v)
+median(satgpa$sat_m)
+median(satgpa$hs_gpa)
+median(satgpa$fy_gpa)
+```
+
+```{r median_one-check}
+grade_code()
+```
 
 
-## Robust statistics 
+### Exercise 5 b
 
+Using the R function `IQR`, compute the interquartile range for each of the variables `sat_v`, `sat_m`, `hs_gpa`, and `fy_gpa`, in the `satgpa` data set. 
+
+```{r iqr_one-setup}
+library(openintro)
+
+```
+
+```{r iqr_one, exercise = TRUE}
+
+```
+
+```{r iqr_one-solution}
+IQR(satgpa$sat_v)
+IQR(satgpa$sat_m)
+IQR(satgpa$hs_gpa)
+IQR(satgpa$fy_gpa)
+```
+
+```{r iqr_one-check}
+grade_code()
+```
 
 
 
@@ -181,15 +349,11 @@ This exercise refers to problem 2.10 on page 57 of the textbook.
 
 For additional practice, it is recommended that you attempt the following exercises from the textbook:
 
-1) Exercise  on page 
-2) Exercise  on page 
-3) Exercise  on page 
-4) Exercise  on page 
-5) Exercise  on page 
-6) Exercise  on page 
-7) Exercise  on page 
-8) Exercise  on page 
-9) Exercise  on page 
+1) Exercise 2.8 on page 57 
+2) Exercise 2.9 on page 57 
+3) Exercise 2.12 on page 58 
+4) Exercise 2.15 on page 58 
+5) Exercise 2.18 on page 59
 
 
 
