@@ -1,0 +1,188 @@
+---
+title: "Lab 1"
+author: "Author Name"
+date: "`r Sys.Date()`"
+output: openintro::lab_report
+---
+
+Make sure to load our important packages by running the following code:
+
+```{r load-packages, message=FALSE}
+library(tidyverse)
+library(openintro)
+```
+
+In this lab assignment, we apply some techniques of exploratory data analysis (EDA) that we've studied to examine movie data from [the Tidy Tuesday project](https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-03-09).
+
+Our first step is to load our data using the `readr` package, run the following command:
+
+```{r}
+# Read in data
+movies <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-03-09/movies.csv')
+# Some data cleaning 
+movies <- movies %>% drop_na(imdb_rating)
+movies <- movies %>% mutate(foreign_film=ifelse(country=="USA","US","Foreign"))
+```
+
+### Exercise 1
+
+Use the `dim` command to determine the number of rows and columns that are in the data set.
+
+```{r data_dim}
+# Insert code for Exercise 1 here
+```
+
+Number of columns =
+
+Number of rows =
+
+### Exercise 2
+
+Use the `glimpse` command to get an idea of the types for all of the variables in the data set.
+
+```{r data_glimpse}
+# Insert code for Exercise 2 here
+```
+
+Variable type for `budget_2013` is = ?
+
+Variable type for `rated` is = ?
+
+Variable type for `imdb_rating` is = ?
+
+### Exercise 3
+
+Run the following command to obtain a frequency table for the `rate` variable:
+
+```{r table}
+table(movies$rated)
+```
+
+Number of levels for the `rated` variable = ?
+
+### Exercise 4
+
+Load the `ggformula` package in order to use the plotting functions we have covered.
+
+```{r load_package}
+# Insert code here
+```
+
+Create a barplot to provide an visual representation of the frequency table obtained in the last exercise.
+
+```{r load_package}
+# Insert code here
+```
+
+Of the different movie ratings, the most common one is = ?
+
+### Exercise 5
+
+Complete the code to compute the mean and median values for the `budget_2013` and `imdb_rating` variables.
+
+```{r descr_stats}
+# Uncomment the next four lines and complete the code
+#budget_mean <- 
+#budget_median <- 
+#imdb_mean <- 
+#imdb_median <- 
+```
+
+
+### Exercise 6
+
+The following code produces a histogram for the `budget_2013` variable:
+```{r budget_hist}
+gf_histogram(~budget_2013,data=movies)
+```
+
+Describe the shape of this distribution. 
+
+
+
+Do you think the median of the `budget_2013` variable is greater or less then the mean of the `budget_2013` variable? 
+
+
+Uncomment and run the following code to check your answer to the last question:
+```{r budget_check}
+#(budget_mean)
+#(budget_median)
+```
+
+### Exercise 7
+Create a histogram for the `imdb_rating` variable.
+```{r ir_hist}
+# Insert code for Exercise 7 here
+```
+
+Based on the plot you obtain, is the data best described as left skewed, symmetric, or right skewed? 
+
+### Exercise 8
+
+Compute the standard deviation for the `budget_2013` and `imdb_rating` variables.
+```{r variances}
+# Insert code for Exercise 8 here
+```
+
+
+### Exercise 9
+
+Obtain a boxplot for the `budget_2013` variable? 
+```{r budget_box}
+# Insert code here
+```
+
+Does the boxplot show any outliers for the `budget_2013` variable? 
+
+
+Obtain a boxplot for the `imdb_rating` variable? 
+```{r ir_box}
+# Insert code here
+```
+
+Does the boxplot show any outliers for the `imdb_rating` variable? 
+
+
+Use the boxplot for the `imdb_rating` variable to estimate its IQR value. 
+
+Compute the IQR for the `imdb_rating` variable. 
+```{r ir_iqr_box}
+# Insert code here
+```
+
+### Exercise 10
+
+The following scatterplot show the  `imdb_rating` variable versus the `budget_2013` variable.
+```{r scatter}
+gf_point(imdb_rating~budget_2013,data=movies)
+```
+
+Describe what this plot informs us on regarding any association between to two variables. 
+
+
+### Exercise 11
+
+The following code outputs the mean value for the `budget_2013` variable grouped by the rating for the movies. 
+```{r grouped}
+movies %>% group_by(rated) %>% summarise(avg_budget=mean(budget_2013))
+```
+
+What conclusions do you draw from the information provided by the result obtained from running the previous command? 
+
+
+
+### Exercise 12
+
+The following code produces a mosaic plot that shows the relationship between two categorical variables. One lists if a movie if rated G, PG, PG-13, or R; and the other lists whether the movie is a foreign film or made in the United States (i.e. domestic):
+```{r}
+movies %>% filter(rated %in% c("G","R","PG-13","PG")) %>% ggplot() + 
+  geom_mosaic(aes(x=product(rated,foreign_film),fill=foreign_film)) + theme(legend.position = "none")
+```
+
+Describe what the mosaic plot shows.
+
+
+Of the films that are G-rated, are more of them foreign or domestic?
+
+Of the films that are domestic, are more of them PG-rated or PG-13 rated? 
+
